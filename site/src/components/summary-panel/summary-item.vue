@@ -34,27 +34,49 @@ function filterForSummary() {
 </script>
 
 <template>
-    <v-list-item :class="props.compact ? 'pl-0' : ''">
+    <v-list-item :class="props.compact ? 'pl-0 summary-row compact' : 'summary-row'">
         <template #prepend>
             <div class="d-flex flex-column align-start">
                 <icon-component :image="props.item.item.image" class="hover-border" :class="border" @click.stop="filterForSummary()" />
-                <div v-if="props.compact" class="text-caption">
+                <div v-if="props.compact" class="text-caption compact-count">
                     {{ totalCountPerSecond }}
                 </div>
             </div>
         </template>
         <template #title>
             <div v-if="!props.compact" class="pl-2 text-body-2 details">
-                {{ totalCountPerSecond }}
+                <span class="summary-count">{{ totalCountPerSecond }}</span>
                 {{ ' ' }}
-                {{ props.item.item.label }}
+                <span class="summary-label">{{ props.item.item.label }}</span>
             </div>
         </template>
     </v-list-item>
 </template>
 
 <style scoped>
+.summary-row {
+    border-radius: var(--glass-radius-sm);
+    margin-bottom: 2px;
+    transition: background-color 0.18s ease;
+}
+.summary-row:hover {
+    background: var(--glass-bg-subtle);
+}
+.summary-row.compact {
+    background: transparent;
+}
 .details {
     white-space: normal;
+}
+.summary-count {
+    font-weight: 600;
+    color: rgb(var(--v-theme-primary));
+}
+.summary-label {
+    opacity: 0.85;
+}
+.compact-count {
+    color: rgb(var(--v-theme-primary));
+    font-weight: 600;
 }
 </style>

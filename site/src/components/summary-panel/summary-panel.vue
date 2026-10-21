@@ -48,14 +48,14 @@ onMounted(() => {
 </script>
 
 <template>
-    <v-list :lines="undefined">
+    <v-list :lines="undefined" class="summary-list">
         <template v-for="{summaryType, totals} in unref(summary)" :key="summaryType">
-            <v-list-item :class="props.compact ? 'pl-1' : ''">
+            <v-list-item :class="props.compact ? 'pl-1 summary-header compact' : 'summary-header'">
                 <template #prepend>
                     <v-icon :icon="summaryTitle[summaryType].icon" color="primary" />
                 </template>
                 <template #title>
-                    <div v-if="!props.compact" class="pl-2 text-body-1 text-primary font-weight-bold">
+                    <div v-if="!props.compact" class="pl-2 text-body-1 text-primary font-weight-bold summary-title">
                         {{ summaryTitle[summaryType].title }}
                     </div>
                 </template>
@@ -74,3 +74,23 @@ onMounted(() => {
         </template>
     </v-list>
 </template>
+
+<style scoped>
+.summary-list {
+    background: transparent;
+    padding: 8px;
+}
+.summary-header {
+    border-radius: var(--glass-radius-sm);
+    margin-bottom: 4px;
+    background: var(--glass-bg-subtle);
+    border: 1px solid var(--glass-border-inner);
+}
+.summary-header.compact {
+    background: transparent;
+    border: none;
+}
+.summary-title {
+    letter-spacing: 0.01em;
+}
+</style>

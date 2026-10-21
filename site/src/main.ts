@@ -31,6 +31,41 @@ app.use(createVuetify({
             mdi,
         },
     },
+    theme: {
+        defaultTheme: 'light',
+        themes: {
+            light: {
+                dark: false,
+                colors: {
+                    background: '#eef2fb',
+                    surface: '#f6f8fd',
+                    primary: '#3d5afe',
+                    'primary-darken-1': '#1f3ad6',
+                    secondary: '#5c6bc0',
+                    'secondary-darken-1': '#3949ab',
+                    success: '#26a69a',
+                    info: '#42a5f5',
+                    warning: '#ffb74d',
+                    error: '#ef5350',
+                },
+            },
+            dark: {
+                dark: true,
+                colors: {
+                    background: '#0d1224',
+                    surface: '#161c34',
+                    primary: '#7b8cff',
+                    'primary-darken-1': '#3d5afe',
+                    secondary: '#9fa8da',
+                    'secondary-darken-1': '#5c6bc0',
+                    success: '#4db6ac',
+                    info: '#64b5f6',
+                    warning: '#ffca28',
+                    error: '#e57373',
+                },
+            },
+        },
+    },
 }));
 
 app.mount('#app');

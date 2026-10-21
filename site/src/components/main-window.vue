@@ -79,12 +79,14 @@ watch(() => unref(settings)?.darkTheme, () => {
 
 <template>
     <icon-draggable v-if="blueprintModel" />
-    <v-app v-if="blueprintModel" class="main-window">
-        <v-app-bar density="compact">
+    <v-app v-if="blueprintModel" class="main-window glass-app-shell">
+        <v-app-bar density="compact" flat class="glass-v-app-bar">
             <template #prepend>
                 <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
             </template>
-            <v-app-bar-title>{{ `${blueprintModel?.blueprintName || ''}` }}</v-app-bar-title>
+            <v-app-bar-title class="font-weight-medium">
+                {{ `${blueprintModel?.blueprintName || ''}` }}
+            </v-app-bar-title>
             <template #append>
                 <main-toolbar>
                     <template #append>
@@ -97,10 +99,10 @@ watch(() => unref(settings)?.darkTheme, () => {
                 </main-toolbar>
             </template>
         </v-app-bar>
-        <v-navigation-drawer v-model="drawer" permanent>
+        <v-navigation-drawer v-model="drawer" permanent class="glass-v-drawer glass-v-drawer-left">
             <icon-list-panel />
         </v-navigation-drawer>
-        <v-main scrollable>
+        <v-main scrollable class="main-content-area">
             <blueprint-panel />
         </v-main>
         <v-navigation-drawer
@@ -108,7 +110,7 @@ watch(() => unref(settings)?.darkTheme, () => {
             permanent
             location="right"
             :rail="showSummaryCompact"
-            :class="showSummaryCompact ? 'summary-no-overflow' : ''"
+            :class="['glass-v-drawer glass-v-drawer-right', showSummaryCompact ? 'summary-no-overflow' : '']"
         >
             <!-- remove completely, so will not recalculate if not shown -->
             <summary-panel v-if="showSummary" :compact="showSummaryCompact" />
@@ -129,10 +131,48 @@ watch(() => unref(settings)?.darkTheme, () => {
     height: 100%;
     width: 100%;
 }
+.main-content-area {
+    background: transparent;
+}
 </style>
 
 <style>
 .summary-no-overflow, .summary-no-overflow > * {
     overflow-y: hidden!important;
+}
+
+// Modernize app-bar title for minimalist aesthetic
+.v-app-bar-title__placeholder {
+    font-weight: 500;
+    letter-spacing: 0.01em;
+}
+
+// Soften v-main scrollbar (already in main.scss but ensure here too)
+.v-main {
+    background: transparent;
+}
+
+// Vuetify drawer border cleanup for glass effect
+.v-navigation-drawer {
+    border-inline-width: 0 !important;
+}
+
+// Vuetify button / chip polish for glass aesthetic
+.v-btn--variant-elevated,
+.v-btn--variant-flat {
+    box-shadow: none;
+}
+
+// V-divider: softer, semi-transparent
+.v-theme--light .v-divider {
+    border-color: rgba(15, 23, 42, 0.08) !important;
+}
+.v-theme--dark .v-divider {
+    border-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+// V-list background transparent so glass shows through
+.glass-v-drawer .v-list {
+    background: transparent;
 }
 </style>

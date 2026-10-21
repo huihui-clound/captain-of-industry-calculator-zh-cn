@@ -14,102 +14,145 @@
     @return map-get(colors.$text-on-colors, $main, $variant);
 }
 
-$hover-elevation: 5;
-$dragging-elevation: 10;
+$hover-elevation: 2;
+$dragging-elevation: 6;
 
+// ---------- Hover background (subtle wash) ----------
 .v-theme--light .hover-background,
 .v-theme--light.hover-background {
-    background-color: get-color('grey', 'lighten-2');
+    background-color: rgba(61, 90, 254, 0.06);
 }
 .v-theme--dark .hover-background,
 .v-theme--dark.hover-background {
-    background-color: get-color('grey', 'base');
+    background-color: rgba(123, 140, 255, 0.1);
 }
 
+// ---------- Border system: 1px subtle borders, indigo accent on highlight ----------
 .hover-border {
     padding: 1px;
-    border: 2px solid transparent;
+    border: 1px solid transparent;
+    transition: border-color 0.18s ease, background-color 0.18s ease;
 }
 
 .v-theme--light .hover-border:hover {
-    border: 2px solid get-color('grey', 'darken-2');
+    border: 1px solid rgba(61, 90, 254, 0.35);
+    background-color: rgba(61, 90, 254, 0.04);
 }
 .v-theme--dark .hover-border:hover {
-    border: 2px solid get-color('grey', 'lighten-2');
+    border: 1px solid rgba(123, 140, 255, 0.4);
+    background-color: rgba(123, 140, 255, 0.08);
 }
 
 .v-theme--light .highlight-border {
-    border: 2px solid get-color('purple', 'darken-2');
+    border: 1px solid get-color('indigo', 'darken-2');
+    box-shadow: 0 0 0 3px rgba(61, 90, 254, 0.12);
 }
 .v-theme--dark .highlight-border {
-    border: 2px solid get-color('purple', 'lighten-2');
+    border: 1px solid get-color('indigo', 'lighten-2');
+    box-shadow: 0 0 0 3px rgba(123, 140, 255, 0.18);
 }
 
 .v-theme--light .highlight-upper-border {
-    border-top: 8px solid get-color('deep-orange', 'darken-2');
+    border-top: 4px solid get-color('deep-orange', 'darken-2');
 }
 .v-theme--dark .highlight-upper-border {
-    border-top: 8px solid get-color('deep-orange', 'lighten-2');
+    border-top: 4px solid get-color('deep-orange', 'lighten-2');
 }
 .v-theme--light .highlight-lower-border {
-    border-bottom: 8px solid get-color('deep-orange', 'darken-2');
+    border-bottom: 4px solid get-color('deep-orange', 'darken-2');
 }
 .v-theme--dark .highlight-lower-border {
-    border-bottom: 8px solid get-color('deep-orange', 'lighten-2');
+    border-bottom: 4px solid get-color('deep-orange', 'lighten-2');
 }
 
+// ---------- Elevation system: modern soft shadows (no heavy Vuetify elevation) ----------
 .hover-elevation {
     padding: 1px;
-    border: 2px solid transparent;
+    border: 1px solid transparent;
+    transition:
+        box-shadow 0.25s ease,
+        background-color 0.25s ease,
+        border-color 0.25s ease,
+        transform 0.18s ease;
 }
 
 .hover-elevation:hover {
-    @include elevation.elevation($hover-elevation, false);
+    background-color: var(--glass-bg-strong, rgba(255, 255, 255, 0.7));
+    border-color: var(--glass-border, rgba(255, 255, 255, 0.6));
+    box-shadow:
+        0 1px 1px rgba(15, 23, 42, 0.04),
+        0 8px 20px rgba(15, 23, 42, 0.08),
+        0 16px 36px rgba(61, 90, 254, 0.08),
+        inset 0 1px 0 0 rgba(255, 255, 255, 0.5);
+    transform: translateY(-1px);
 }
 
 .unselected-border {
-    border: 2px solid transparent;
+    border: 1px solid transparent;
 }
 
 .v-theme--light .selected-border {
-    border: 2px solid get-color('green', 'darken-2');
+    border: 1px solid get-color('indigo', 'darken-2');
+    box-shadow: 0 0 0 3px rgba(61, 90, 254, 0.18);
 }
 .v-theme--dark .selected-border {
-    border: 2px solid get-color('green', 'lighten-2');
+    border: 1px solid get-color('indigo', 'lighten-2');
+    box-shadow: 0 0 0 3px rgba(123, 140, 255, 0.24);
 }
 
 .hover-elevation-static {
-    @include elevation.elevation($hover-elevation, false);
+    box-shadow:
+        0 1px 1px rgba(15, 23, 42, 0.04),
+        0 4px 12px rgba(15, 23, 42, 0.06),
+        0 16px 40px rgba(61, 90, 254, 0.05),
+        inset 0 1px 0 0 rgba(255, 255, 255, 0.5);
 }
 
 .dragging-elevation {
     padding: 3px;
-    @include elevation.elevation($dragging-elevation, false);
+    box-shadow:
+        0 4px 8px rgba(15, 23, 42, 0.08),
+        0 12px 32px rgba(15, 23, 42, 0.12),
+        0 32px 64px rgba(61, 90, 254, 0.16),
+        inset 0 1px 0 0 rgba(255, 255, 255, 0.5);
 }
 
 .dragging-elevation-static {
-    @include elevation.elevation($dragging-elevation, false);
+    box-shadow:
+        0 4px 8px rgba(15, 23, 42, 0.08),
+        0 12px 32px rgba(15, 23, 42, 0.12),
+        0 32px 64px rgba(61, 90, 254, 0.16),
+        inset 0 1px 0 0 rgba(255, 255, 255, 0.5);
 }
 
+// ---------- Window surface tints: now glass-friendly subtle washes ----------
 .v-theme--light .bg-window-idle {
-    background-color: get-color('grey', 'lighten-4');
+    background-color: rgba(255, 255, 255, 0.45);
+    -webkit-backdrop-filter: blur(12px) saturate(160%);
+    backdrop-filter: blur(12px) saturate(160%);
 }
 .v-theme--dark .bg-window-idle {
-    background-color: get-color('grey', 'darken-2');
+    background-color: rgba(28, 36, 64, 0.55);
+    -webkit-backdrop-filter: blur(12px) saturate(160%);
+    backdrop-filter: blur(12px) saturate(160%);
 }
 
 .v-theme--light .bg-window-statusbar {
-    background-color: get-color('grey', 'lighten-2');
+    background-color: rgba(255, 255, 255, 0.6);
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
 }
 .v-theme--dark .bg-window-statusbar {
-    background-color: get-color('grey', 'darken-3');
+    background-color: rgba(22, 28, 52, 0.7);
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
 }
 
 .v-theme--light .bg-has-probability {
-    background-color: get-color('cyan', 'lighten-4');
+    background-color: rgba(178, 235, 242, 0.55);
 }
 .v-theme--dark .bg-has-probability {
-    background-color: get-color('cyan', 'darken-4');
+    background-color: rgba(77, 208, 225, 0.18);
 }
 
 .v-theme--light .link-stroke-black {

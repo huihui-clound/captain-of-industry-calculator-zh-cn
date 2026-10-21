@@ -88,7 +88,7 @@ syncRef(
 </script>
 
 <template>
-    <div class="d-flex">
+    <div class="icon-filter-root">
         <v-autocomplete
             v-model="select"
             v-model:search="search"
@@ -97,16 +97,21 @@ syncRef(
             hide-details
             :label="t('filter.item')"
             :items="currentPage"
+            variant="outlined"
+            density="comfortable"
+            bg-color="transparent"
+            class="glass-input"
             @focus="(page = 1)"
         >
             <template #prepend-item>
                 <v-btn-toggle
                     v-model="direction"
                     density="compact"
-                    class="ml-2"
+                    class="ml-2 mb-2"
                     group
                     mandatory
                     variant="outlined"
+                    color="primary"
                 >
                     <v-btn value="-1">{{ t('filter.input') }}</v-btn>
                     <v-btn value="0">{{ t('filter.all') }}</v-btn>
@@ -140,6 +145,10 @@ syncRef(
             clearable
             hide-details
             :items="allTiers"
+            variant="outlined"
+            density="comfortable"
+            bg-color="transparent"
+            class="glass-input"
         >
             <template #prepend-item>
                 <v-btn-toggle
@@ -148,6 +157,7 @@ syncRef(
                     group
                     mandatory
                     variant="outlined"
+                    color="primary"
                 >
                     <v-btn value="-1">
                         &lt;=
@@ -170,3 +180,29 @@ syncRef(
         </v-select>
     </div>
 </template>
+
+<style scoped>
+.icon-filter-root {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.glass-input :deep(.v-field) {
+    background: var(--glass-bg-subtle) !important;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border-radius: var(--glass-radius-sm);
+    box-shadow: inset 0 1px 0 0 var(--glass-highlight);
+}
+.glass-input :deep(.v-field__outline) {
+    --v-field-border-width: 1px;
+    opacity: 0.6;
+}
+.glass-input :deep(.v-field--focused .v-field__outline) {
+    opacity: 1;
+    color: rgb(var(--v-theme-primary));
+}
+.glass-input :deep(.v-field--focused) {
+    background: var(--glass-bg-strong) !important;
+}
+</style>

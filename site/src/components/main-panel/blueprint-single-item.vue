@@ -123,14 +123,14 @@ watch(() => props.item.rect, (value, oldValue) => {
 <template>
     <div
         ref="mainDivElement"
-        class="rounded parent-div"
+        class="rounded parent-div glass-panel-strong"
         :class="[computedElevation, itemStateColor, computedSelectedClass]"
         :style="computeStyle"
         :data-item-id="props.item.key"
         @pointerdown.left.stop="dragStart($event, props.item); isDragging = true;"
     >
-        <div class="bg-primary title-row">
-            <div class="title-text text-caption">
+        <div class="title-row">
+            <div class="title-text text-caption title-label">
                 {{ props.item.label }}
             </div>
             <div class="float-right mr-1">
@@ -140,7 +140,8 @@ watch(() => props.item.rect, (value, oldValue) => {
                 <v-btn
                     size="x-small"
                     color="secondary"
-                    variant="flat"
+                    variant="text"
+                    density="compact"
                     @pointerdown.left.stop
                     @click.stop="selectItem(SelectedClassType.BlueprintItemModel, props.item)"
                 >
@@ -151,7 +152,8 @@ watch(() => props.item.rect, (value, oldValue) => {
                 <v-btn
                     size="x-small"
                     color="secondary"
-                    variant="flat"
+                    variant="text"
+                    density="compact"
                     rounded="0"
                     :disabled="!props.item.isUpgradable(1)"
                     @pointerdown.left.stop
@@ -162,7 +164,8 @@ watch(() => props.item.rect, (value, oldValue) => {
                 <v-btn
                     size="x-small"
                     color="secondary"
-                    variant="flat"
+                    variant="text"
+                    density="compact"
                     rounded="0"
                     :disabled="!props.item.isUpgradable(-1)"
                     @pointerdown.left.stop
@@ -205,17 +208,34 @@ watch(() => props.item.rect, (value, oldValue) => {
     position: absolute;
     user-select: none;
     touch-action: none;
+    border-radius: var(--glass-radius);
+    overflow: hidden;
 }
 .title-row {
     display: block;
     position: relative;
-    height: 1.7rem;
+    height: 1.9rem;
     overflow: hidden;
+    background:
+        linear-gradient(135deg, rgba(61, 90, 254, 0.85), rgba(92, 107, 192, 0.85));
+    color: #fff;
+    padding: 0 4px;
+}
+:deep(.v-theme--dark) .title-row {
+    background:
+        linear-gradient(135deg, rgba(61, 90, 254, 0.65), rgba(92, 107, 192, 0.6));
+}
+.title-label {
+    font-weight: 500;
+    letter-spacing: 0.01em;
+    opacity: 0.95;
 }
 .main-row {
     flex-wrap: nowrap;
     display: flex;
     flex-direction: row;
     align-items: start;
+    padding: 6px;
+    gap: 4px;
 }
 </style>

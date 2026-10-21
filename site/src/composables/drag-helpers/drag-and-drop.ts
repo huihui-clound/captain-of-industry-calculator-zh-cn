@@ -141,6 +141,9 @@ export function useDragAndDrop<ItemType>(
         currentlyDragging.value = undefined;
         activatorElem.value = undefined;
         isDragging.value = false;
+        // Re-enable text selection (was disabled in onStart to prevent the
+        // browser from highlighting text along the drag trajectory).
+        document.body.classList.remove('is-dragging');
         //don't clear rect, item may use it for positions
     }
 
@@ -209,6 +212,11 @@ export function useDragAndDrop<ItemType>(
         currentItem.value = item;
         currentlyDragging.value = draggable;
         isDragging.value = true;
+
+        // Disable text selection globally during drag so the browser does not
+        // highlight text (e.g. labels on other factory cards) along the drag
+        // trajectory. Removed in cleanup() when the drag ends.
+        document.body.classList.add('is-dragging');
 
         const activator = event.currentTarget;
         activatorElem.value = activator;
