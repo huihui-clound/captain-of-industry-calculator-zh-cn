@@ -501,9 +501,9 @@ defineExpose({resetView, runLayout});
     -webkit-user-select: none;
     -ms-user-select: none;
     background:
-        radial-gradient(at 12% 8%, rgba(61, 90, 254, 0.1) 0px, transparent 55%),
-        radial-gradient(at 88% 4%, rgba(123, 140, 255, 0.08) 0px, transparent 50%),
-        radial-gradient(at 96% 92%, rgba(92, 107, 192, 0.08) 0px, transparent 60%);
+        radial-gradient(at 12% 8%, rgba(88, 166, 255, 0.07) 0px, transparent 55%),
+        radial-gradient(at 88% 4%, rgba(56, 139, 253, 0.06) 0px, transparent 50%),
+        radial-gradient(at 96% 92%, rgba(110, 118, 129, 0.06) 0px, transparent 60%);
 }
 .topology-svg {
     width: 100%;
@@ -519,7 +519,7 @@ defineExpose({resetView, runLayout});
 // edges
 .topology-edge {
     fill: none;
-    stroke: rgba(61, 90, 254, 0.4);
+    stroke: rgba(88, 166, 255, 0.4);
     transition:
         stroke 0.18s ease,
         stroke-width 0.18s ease,
@@ -561,8 +561,8 @@ defineExpose({resetView, runLayout});
     box-sizing: border-box;
 }
 :deep(.v-theme--dark) .edge-label-chip {
-    background: rgba(34, 42, 71, 0.92);
-    border-color: rgba(123, 140, 255, 0.22);
+    background: rgba(22, 27, 34, 0.92);
+    border-color: rgba(240, 246, 252, 0.12);
 }
 .edge-label-icon {
     flex: 0 0 auto;
@@ -606,18 +606,18 @@ defineExpose({resetView, runLayout});
     filter: drop-shadow(0 4px 12px rgba(15, 23, 42, 0.08));
 }
 :deep(.v-theme--dark) .node-bg {
-    fill: rgba(34, 42, 71, 0.85);
-    stroke: rgba(123, 140, 255, 0.2);
+    fill: rgba(22, 27, 34, 0.88);
+    stroke: rgba(240, 246, 252, 0.12);
 }
 .topology-node.highlighted .node-bg {
     stroke: rgb(var(--v-theme-primary));
     stroke-width: 2;
-    filter: drop-shadow(0 8px 20px rgba(61, 90, 254, 0.25));
+    filter: drop-shadow(0 8px 20px rgba(88, 166, 255, 0.25));
 }
 .topology-node.selected .node-bg {
     stroke: rgb(var(--v-theme-primary));
     stroke-width: 2.5;
-    filter: drop-shadow(0 8px 24px rgba(61, 90, 254, 0.35));
+    filter: drop-shadow(0 8px 24px rgba(88, 166, 255, 0.35));
 }
 
 .node-foreign {

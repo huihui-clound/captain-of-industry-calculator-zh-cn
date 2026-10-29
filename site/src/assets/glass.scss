@@ -22,37 +22,38 @@
     --glass-bf-strong: blur(20px) saturate(180%);
     --glass-bf-subtle: blur(10px) saturate(140%);
 
-    // Light theme defaults
-    --glass-bg: rgba(255, 255, 255, 0.55);
-    --glass-bg-strong: rgba(255, 255, 255, 0.75);
-    --glass-bg-subtle: rgba(255, 255, 255, 0.35);
-    --glass-border: rgba(255, 255, 255, 0.6);
-    --glass-border-inner: rgba(255, 255, 255, 0.4);
+    // Light theme defaults (GitHub light surface tints)
+    --glass-bg: rgba(255, 255, 255, 0.6);
+    --glass-bg-strong: rgba(255, 255, 255, 0.8);
+    --glass-bg-subtle: rgba(255, 255, 255, 0.4);
+    --glass-border: rgba(31, 35, 40, 0.12);
+    --glass-border-inner: rgba(31, 35, 40, 0.07);
     --glass-highlight: rgba(255, 255, 255, 0.85);
 
     --glass-shadow:
-        0 1px 1px rgba(15, 23, 42, 0.04),
-        0 4px 12px rgba(15, 23, 42, 0.06),
-        0 16px 40px rgba(61, 90, 254, 0.05);
+        0 1px 1px rgba(31, 35, 40, 0.04),
+        0 4px 12px rgba(31, 35, 40, 0.06),
+        0 16px 40px rgba(31, 35, 40, 0.06);
     --glass-shadow-hover:
-        0 2px 2px rgba(15, 23, 42, 0.05),
-        0 8px 20px rgba(15, 23, 42, 0.08),
-        0 24px 48px rgba(61, 90, 254, 0.08);
+        0 2px 2px rgba(31, 35, 40, 0.05),
+        0 8px 20px rgba(31, 35, 40, 0.08),
+        0 24px 48px rgba(31, 35, 40, 0.1);
     --glass-shadow-elevated:
-        0 4px 8px rgba(15, 23, 42, 0.06),
-        0 12px 32px rgba(15, 23, 42, 0.1),
-        0 32px 64px rgba(61, 90, 254, 0.1);
+        0 4px 8px rgba(31, 35, 40, 0.06),
+        0 12px 32px rgba(31, 35, 40, 0.1),
+        0 32px 64px rgba(31, 35, 40, 0.12);
 
     --glass-inset-highlight: inset 0 1px 0 0 var(--glass-highlight);
 }
 
 .v-theme--dark {
-    --glass-bg: rgba(28, 36, 64, 0.55);
-    --glass-bg-strong: rgba(34, 42, 71, 0.75);
-    --glass-bg-subtle: rgba(22, 28, 52, 0.4);
-    --glass-border: rgba(123, 140, 255, 0.18);
-    --glass-border-inner: rgba(123, 140, 255, 0.1);
-    --glass-highlight: rgba(255, 255, 255, 0.08);
+    // GitHub dark surface (#161b22 on #0d1117)
+    --glass-bg: rgba(22, 27, 34, 0.66);
+    --glass-bg-strong: rgba(22, 27, 34, 0.85);
+    --glass-bg-subtle: rgba(22, 27, 34, 0.4);
+    --glass-border: rgba(240, 246, 252, 0.1);
+    --glass-border-inner: rgba(240, 246, 252, 0.06);
+    --glass-highlight: rgba(240, 246, 252, 0.06);
 
     --glass-shadow:
         0 1px 1px rgba(0, 0, 0, 0.2),
@@ -123,22 +124,23 @@
 }
 
 // ---------- App-level background gradient ----------
+// 极淡的冷色光晕，为玻璃面板提供模糊层次（参照 GitHub 风格的中性底色）
 .glass-app-background {
     background-color: var(--v-background);
     background-image:
-        radial-gradient(at 12% 8%, rgba(61, 90, 254, 0.18) 0px, transparent 55%),
-        radial-gradient(at 88% 4%, rgba(123, 140, 255, 0.16) 0px, transparent 50%),
-        radial-gradient(at 96% 92%, rgba(92, 107, 192, 0.14) 0px, transparent 60%),
-        radial-gradient(at 4% 96%, rgba(159, 168, 218, 0.12) 0px, transparent 55%);
+        radial-gradient(at 12% 8%, rgba(9, 105, 218, 0.08) 0px, transparent 55%),
+        radial-gradient(at 88% 4%, rgba(88, 166, 255, 0.07) 0px, transparent 50%),
+        radial-gradient(at 96% 92%, rgba(31, 35, 40, 0.05) 0px, transparent 60%),
+        radial-gradient(at 4% 96%, rgba(31, 35, 40, 0.04) 0px, transparent 55%);
     background-attachment: fixed;
 }
 
 .v-theme--dark .glass-app-background {
     background-image:
-        radial-gradient(at 12% 8%, rgba(61, 90, 254, 0.22) 0px, transparent 55%),
-        radial-gradient(at 88% 4%, rgba(123, 140, 255, 0.18) 0px, transparent 50%),
-        radial-gradient(at 96% 92%, rgba(92, 107, 192, 0.18) 0px, transparent 60%),
-        radial-gradient(at 4% 96%, rgba(159, 168, 218, 0.12) 0px, transparent 55%);
+        radial-gradient(at 12% 8%, rgba(88, 166, 255, 0.07) 0px, transparent 55%),
+        radial-gradient(at 88% 4%, rgba(56, 139, 253, 0.06) 0px, transparent 50%),
+        radial-gradient(at 96% 92%, rgba(110, 118, 129, 0.05) 0px, transparent 60%),
+        radial-gradient(at 4% 96%, rgba(110, 118, 129, 0.04) 0px, transparent 55%);
 }
 
 // ---------- Vuetify overrides for glass app bar / drawers ----------

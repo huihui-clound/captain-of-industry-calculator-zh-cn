@@ -217,13 +217,13 @@ watch(() => props.item.rect, (value, oldValue) => {
     height: 1.9rem;
     overflow: hidden;
     background:
-        linear-gradient(135deg, rgba(61, 90, 254, 0.85), rgba(92, 107, 192, 0.85));
+        linear-gradient(135deg, rgba(9, 105, 218, 0.9), rgba(31, 111, 235, 0.85));
     color: #fff;
     padding: 0 4px;
 }
 :deep(.v-theme--dark) .title-row {
     background:
-        linear-gradient(135deg, rgba(61, 90, 254, 0.65), rgba(92, 107, 192, 0.6));
+        linear-gradient(135deg, rgba(31, 111, 235, 0.7), rgba(56, 139, 253, 0.6));
 }
 .title-label {
     font-weight: 500;

@@ -157,7 +157,7 @@ watch(() => props.modelValue, (value, oldValue) => {
     background: rgba(255, 255, 255, 0.35);
 }
 :deep(.v-theme--dark) .topology-body {
-    background: rgba(22, 28, 52, 0.5);
+    background: rgba(13, 17, 23, 0.5);
 }
 .topology-loading {
     position: absolute;
